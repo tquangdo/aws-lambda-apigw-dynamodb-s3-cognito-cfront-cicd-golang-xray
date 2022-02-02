@@ -10,6 +10,12 @@
 ## reference
 [viblo](https://viblo.asia/p/serverless-series-golang-bai-1-serverless-va-aws-lambda-gAm5y71XZdb)
 
+## before run terraform
+> !! ⚠️⚠️WARNING⚠️⚠️ !!
+1. replace `us-west-2` to `us-east-1`
+2. replace `<AWS_ACCID>`
+3. replace bucketname in `terraform-start/policies/lambda_policy.json`
+
 ## bai 4
 ![bai4](screenshots/bai4.jpeg)
 ### up src code to lambda
@@ -87,3 +93,21 @@ base_url = {
 ```
 - access "web" on browser
 ![web](screenshots/web.png)
+### cfront
+- create distribution domain name=`https://d2ixlmqfgvzqk3.cloudfront.net`
+- access domain name on browser -> will see
+- access `https://d2ixlmqfgvzqk3.cloudfront.net/login` & refresh -> will see ERR `AccessDenied`
+### lambda@edge
+- create function name=`DTQLambdaEdgeGoLang`
+
+## bai 7
+![bai7](screenshots/bai7.jpeg)
+### production
+- before access `https://mvbqvkm3e4.execute-api.us-east-1.amazonaws.com/production/books` need run this (unless will have ERR)
+```shell
+aws lambda add-permission --function-name arn:aws:lambda:us-east-1:<AWS_ACCID>:function:books_list:production --source-arn "arn:aws:execute-api:us-east-1:<AWS_ACCID>:mvbqvkm3e4/*/GET/books"  --principal apigateway.amazonaws.com --statement-id 4d89f8ab-35b4-49a6-aced-f2e318e8e10f --action lambda:InvokeFunction
+->
+{
+    "Statement": "{\"Sid\":\"4d89f8ab-35b4-49a6-aced-f2e318e8e10f\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"apigateway.amazonaws.com\"},\"Action\":\"lambda:InvokeFunction\",\"Resource\":\"arn:aws:lambda:us-east-1:<AWS_ACCID>:function:books_list:production\",\"Condition\":{\"ArnLike\":{\"AWS:SourceArn\":\"arn:aws:execute-api:us-east-1:<AWS_ACCID>:mvbqvkm3e4/*/GET/books\"}}}"
+}
+```

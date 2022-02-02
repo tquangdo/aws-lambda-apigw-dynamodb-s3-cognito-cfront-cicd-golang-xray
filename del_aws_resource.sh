@@ -3,8 +3,8 @@
 
 # ~~~~~~~~~~~ 1) S3 ~~~~~~~~~~~
 # dtq-bucket-golang-up
-aws s3 rm s3://dtq-bucket-golang-up/ --recursivezip
-aws s3api delete-bucket --bucket dtq-bucket-golang-up
+# aws s3 rm s3://dtq-bucket-golang-up/ --recursivezip
+# aws s3api delete-bucket --bucket dtq-bucket-golang-up
 ## IF ERR="can NOT delete due to bucket policy" then must delete manually!!!
 
 
@@ -51,10 +51,10 @@ done
 ## -> run "Role" again!
 
 ## ~~~~~~~~~~~ POLICY!!!
-# policies=$(aws iam list-policies --query 'Policies[?contains(PolicyName, `DTQ`)].{ARN:Arn}' --output text) # replace "DTQ" <=> "<POLICY_NAME>"
-# for policy_arn in $policies; do
-#     aws iam delete-policy --policy-arn $policy_arn
-# done
+policies=$(aws iam list-policies --query 'Policies[?contains(PolicyName, `AWSLambdaBasicExecutionRole-`)].{ARN:Arn}' --output text) # replace "DTQ" <=> "<POLICY_NAME>"
+for policy_arn in $policies; do
+    aws iam delete-policy --policy-arn $policy_arn
+done
 
 ## ~~~~~~~~~~~ NOTE!!!
 # aws iam list-role-policies --role-name DTQRoleDel2
