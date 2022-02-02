@@ -6,6 +6,8 @@
 *.tfstate
 *.tfstate.*
 *go.sum*
+*.DS_Store*
+**/.DS_Store
 
 # Crash log files
 crash.log

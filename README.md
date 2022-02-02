@@ -5,6 +5,8 @@
 ![Forks](https://img.shields.io/github/forks/tquangdo/aws-lambda-apigw-dynamodb-s3-cognito-cfront-cicd-golang?color=f05340)
 [![Report an issue](https://img.shields.io/badge/Support-Issues-green)](https://github.com/tquangdo/aws-lambda-apigw-dynamodb-s3-cognito-cfront-cicd-golang/issues/new)
 
+![overview](screenshots/overview.png)
+
 ## reference
 [viblo](https://viblo.asia/p/serverless-series-golang-bai-1-serverless-va-aws-lambda-gAm5y71XZdb)
 
@@ -68,7 +70,7 @@ base_url = {
 ```shell
 sh build.sh
 aws lambda update-function-code --function-name login --zip-file fileb://login.zip
-curl -sX POST -d '{"username":"tquangdo1103@gmail.com", "password": "87654321@bB"}' https://41z6leidch.execute-api.us-east-1.amazonaws.com/staging/login # api gw URL will change after rerun terraform!!!
+curl -sX POST -d '{"username":"<GMAIL>", "password": "87654321@bB"}' https://41z6leidch.execute-api.us-east-1.amazonaws.com/staging/login # api gw URL will change after rerun terraform!!!
 -> output JSON of "AccessToken", "IdToken"...
 ```
 
