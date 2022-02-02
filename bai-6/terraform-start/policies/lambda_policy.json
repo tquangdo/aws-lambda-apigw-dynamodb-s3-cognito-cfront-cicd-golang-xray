@@ -1,0 +1,32 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "1",
+      "Action": "logs:*",
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "Sid": "2",
+      "Effect": "Allow",
+      "Action": "dynamodb:*",
+      "Resource": "arn:aws:dynamodb:us-east-1:<AWS_ACCID>:table/books"
+    },
+    {
+      "Sid": "3",
+      "Effect": "Allow",
+      "Action": "s3:PutObject",
+      "Resource": "arn:aws:s3:::dtq-bucket-golang-upload/*"
+    },
+    {
+      "Sid": "4",
+      "Effect": "Allow",
+      "Action": [
+        "cognito-sync:*",
+        "cognito-identity:*"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
