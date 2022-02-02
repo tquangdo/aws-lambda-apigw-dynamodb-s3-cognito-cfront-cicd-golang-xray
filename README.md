@@ -101,7 +101,7 @@ base_url = {
 - create function name=`DTQLambdaEdgeGoLang`
 
 ## bai 7
-![bai7](screenshots/bai7.jpeg)
+![bai7](screenshots/bai7.png)
 ### production
 - before access `https://mvbqvkm3e4.execute-api.us-east-1.amazonaws.com/production/books` need run this (unless will have ERR)
 ```shell
