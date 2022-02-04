@@ -3,8 +3,8 @@
 
 # ~~~~~~~~~~~ 1) S3 ~~~~~~~~~~~
 # dtq-bucket-golang-up
-# aws s3 rm s3://dtq-bucket-golang-up/ --recursivezip
-# aws s3api delete-bucket --bucket dtq-bucket-golang-up
+aws s3 rm s3://codepipeline-us-east-1-332745575489/ --recursive
+aws s3api delete-bucket --bucket codepipeline-us-east-1-332745575489
 ## IF ERR="can NOT delete due to bucket policy" then must delete manually!!!
 
 
@@ -37,21 +37,21 @@ done
 
 # ~~~~~~~~~~~ 4) Role & Policy ~~~~~~~~~~~
 ## ~~~~~~~~~~~ ROLE!!!
-# roles=$(aws iam list-roles --query 'Roles[?contains(RoleName, `DTQ`)].RoleName' --output text) # replace "DTQ" <=> "<ROLE_NAME>"
-# for role in $roles; do
-#   policies=$(aws iam list-attached-role-policies --role-name=$role --query AttachedPolicies[*][PolicyArn] --output text)
-#   for policy_arn in $policies; do
-#     aws iam detach-role-policy --policy-arn $policy_arn --role-name $role
-#   done
-#   aws iam delete-role --role-name $role
-# done
+roles=$(aws iam list-roles --query 'Roles[?contains(RoleName, `DTQ`)].RoleName' --output text) # replace "DTQ" <=> "<ROLE_NAME>"
+for role in $roles; do
+  policies=$(aws iam list-attached-role-policies --role-name=$role --query AttachedPolicies[*][PolicyArn] --output text)
+  for policy_arn in $policies; do
+    aws iam detach-role-policy --policy-arn $policy_arn --role-name $role
+  done
+  aws iam delete-role --role-name $role
+done
 
 ## IF ERR="Cannot delete entity, must remove roles from instance profile first"!!!
 # aws iam remove-role-from-instance-profile --instance-profile-name $(aws iam list-instance-profiles-for-role --role-name <ROLE_NAME> --query 'InstanceProfiles[*].InstanceProfileName' --output text) --role-name <ROLE_NAME>
 ## -> run "Role" again!
 
 ## ~~~~~~~~~~~ POLICY!!!
-policies=$(aws iam list-policies --query 'Policies[?contains(PolicyName, `AWSLambdaBasicExecutionRole-`)].{ARN:Arn}' --output text) # replace "DTQ" <=> "<POLICY_NAME>"
+policies=$(aws iam list-policies --query 'Policies[?contains(PolicyName, `DTQ`)].{ARN:Arn}' --output text) # replace "DTQ" <=> "<POLICY_NAME>"
 for policy_arn in $policies; do
     aws iam delete-policy --policy-arn $policy_arn
 done
