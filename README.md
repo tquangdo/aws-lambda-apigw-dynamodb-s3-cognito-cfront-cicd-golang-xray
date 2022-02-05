@@ -126,7 +126,7 @@ aws lambda add-permission --function-name arn:aws:lambda:us-east-1:<AWS_ACCID>:f
 ![devconnect](screenshots/devconnect.png)
 
 ### 8-1/ CI/CD for Lambda
-![bai8_1](screenshots/bai8_1.png)
+![detail8_1](screenshots/detail8_1.png)
 #### A) pipeline (staging)
 - create name=`DTQPipelineGoLangStg`
 - repo: https://github.com/tquangdo/codepipeline-list-function (branch:`staging`)
@@ -162,7 +162,7 @@ aws lambda add-permission --function-name arn:aws:lambda:us-east-1:<AWS_ACCID>:f
 - access `https://k9kzwa1osa.execute-api.us-east-1.amazonaws.com/production/books` will show result without `total`
 
 ### 8-2/ CI/CD for SPA
-![bai8_2](screenshots/bai8_2.png)
+![detail8_2](screenshots/detail8_2.png)
 #### pipeline
 - create name=`DTQPipelineGoLangSPA`
 - repo: https://github.com/tquangdo/serverless-series-spa
