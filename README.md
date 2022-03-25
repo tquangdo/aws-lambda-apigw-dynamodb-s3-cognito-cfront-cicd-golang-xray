@@ -163,6 +163,7 @@ aws lambda add-permission --function-name arn:aws:lambda:us-east-1:<AWS_ACCID>:f
 
 ### 8-2/ CI/CD for SPA
 ![detail8_2](screenshots/detail8_2.png)
+[cicd](https://docs.google.com/spreadsheets/d/1m8LuBQUzqIQ0bJYb3NJZOT4iSb78xUEG/edit#gid=1878281573&range=B9)
 #### pipeline
 - create name=`DTQPipelineGoLangSPA`
 - repo: https://github.com/tquangdo/serverless-series-spa
