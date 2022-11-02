@@ -193,3 +193,15 @@ terraform apply -auto-approve
 - => will auto create:
 1. codebuild: `click-fe-build-dtq`
 2. codepipeline: `click-fe-dtq`
+
+### 9/ xray
+#### reference
+[vibloxray](https://viblo.asia/p/serverless-series-golang-bai-10-debugging-monitoring-tracing-aws-lambda-Do754r74ZM6#_tracing-with-aws-x-ray-8)
+#### overview
+- Lambda
+-
+![l_xray](screenshots/l_xray.png)
+
+- CloudWatch
+-
+![cw_xray](screenshots/cw_xray.png)
